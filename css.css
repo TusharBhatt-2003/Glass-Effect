@@ -33,9 +33,16 @@ body {
     backdrop-filter: blur(15px);
     overflow: hidden;
     border-radius: 10px;
-    border: 0.1px solid rgba(255, 255, 255, 0.484);
+  
     filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.427));
-      -webkit-filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.427));
+    -webkit-filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.427));
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+    &:hover {
+        border: 0.1px solid rgba(255, 255, 255, 0.484);
+    }
+
 }
 
 .glass-inner {
@@ -85,10 +92,10 @@ form {
         font-size: small;
         font-family: "Urbanist", sans-serif;
         & a {
-            color: black;
+            color: rgb(151, 255, 161);
             text-decoration: none;
             &:hover {
-                color: rgb(0, 0, 0);
+                color: rgb(7, 139, 0);
                 text-decoration: underline;
             }
         }
