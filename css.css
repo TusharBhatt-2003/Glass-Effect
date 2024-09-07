@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Krona+One&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap');
 
-/* * {
+/* Resetting margin and padding for all elements */
+* {
     margin: 0;
     padding: 0;
-} */
+}
 
 body {
     background-color: rgb(0, 0, 0);
@@ -11,38 +12,41 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100dvh;
-    & video {
+    height: 100vh; /* Changed 100dvh to 100vh for broader compatibility */
+    -webkit-touch-callout: none; /* Prevent callout on iOS */
+    -webkit-user-select: none; /* Disable text selection on iOS */
+    -ms-user-select: none; /* Disable text selection on IE */
+    user-select: none;
+
+    /* For video background */
+    position: relative;
+}
+
+body video {
     width: 100%;
     height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    object-fit: cover; /* Ensures the video covers the entire div */
-    z-index: -1; /* Places the video behind the content */
+    object-fit: cover;
+    z-index: -1;
     filter: blur(5px) brightness(75%);
-    
-    }
-
+    -webkit-filter: blur(5px) brightness(75%); /* Add for iOS/Safari */
 }
 
 .glass-container {
-    grid-area: glass;
     padding: 2rem;
     background-color: rgba(255, 252, 224, 0);
     backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px); /* Add for iOS */
     overflow: hidden;
     border-radius: 10px;
-  
-    filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.427));
-    -webkit-filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.427));
-    font-size: 1.2rem;
-    cursor: pointer;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.427); /* Standardize drop-shadow */
     transition: background-color 0.3s ease-in-out;
-    &:hover {
-        border: 0.1px solid rgba(255, 255, 255, 0.484);
-    }
+}
 
+.glass-container:hover {
+    border: 0.1px solid rgba(255, 255, 255, 0.484);
 }
 
 .glass-inner {
@@ -51,11 +55,12 @@ body {
     align-items: start;
     font-family: "Urbanist", sans-serif;
     color: white;
-    & h1 {
-        margin: 0;
-        padding: 0;
-        font-weight: 500;
-    }
+}
+
+.glass-inner h1 {
+    margin: 0;
+    padding: 0;
+    font-weight: 500;
 }
 
 form {
@@ -64,43 +69,51 @@ form {
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
-
-    & input {
-        outline: none;
-        font-family: "Urbanist", sans-serif;
-        font-size: xx-small;
-        font-weight: 600;
-        background-color: rgba(198, 198, 198, 0.255);
-        padding: 10px;
-        margin-bottom: 10px;
-        width: 200px;
-        border-radius: 5px;
-        border: 1px solid rgb(255, 255, 255);
-        &:focus {
-            border: 1.5px solid rgb(255, 255, 255);
-            background-color: #4f4f4f58;
-            color: white;
-        }
-        &:hover {
-            border: 1px solid rgb(0, 0, 0);
-        }
-        &::placeholder {
-            color: black;
-        }
-    }
-    & p {
-        font-size: small;
-        font-family: "Urbanist", sans-serif;
-        & a {
-            color: rgb(151, 255, 161);
-            text-decoration: none;
-            &:hover {
-                color: rgb(7, 139, 0);
-                text-decoration: underline;
-            }
-        }
-    }
 }
+
+form input {
+    outline: none;
+    font-family: "Urbanist", sans-serif;
+    font-size: xx-small;
+    font-weight: 600;
+    background-color: rgba(198, 198, 198, 0.255);
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 200px;
+    border-radius: 5px;
+    border: 1px solid rgb(255, 255, 255);
+    transition: border 0.3s, background-color 0.3s, color 0.3s;
+}
+
+form input:focus {
+    border: 1.5px solid rgb(255, 255, 255);
+    background-color: #4f4f4f58;
+    color: white;
+}
+
+form input:hover {
+    border: 1px solid rgb(0, 0, 0);
+}
+
+form input::placeholder {
+    color: black;
+}
+
+form p {
+    font-size: small;
+    font-family: "Urbanist", sans-serif;
+}
+
+form p a {
+    color: rgb(151, 255, 161);
+    text-decoration: none;
+}
+
+form p a:hover {
+    color: rgb(7, 139, 0);
+    text-decoration: underline;
+}
+
 .submit {
     background-color: rgb(255, 255, 255);
     color: black;
@@ -108,21 +121,20 @@ form {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    &:hover {
-        background-color: rgb(0, 0, 0);
-        color: white;
-        border: none;
-    }
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.submit:hover {
+    background-color: rgb(0, 0, 0);
+    color: white;
 }
 
 @media screen and (max-width: 35em) {
-    /* .glass-container {
+    .glass-container, .glass-inner {
         width: 70%;
     }
-    .glass-inner {
-        width: 70%;
-    }
-    input {
+    
+    form input {
         width: 90%;
-    } */
+    }
 }
